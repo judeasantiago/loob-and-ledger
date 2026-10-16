@@ -3,7 +3,7 @@ import { useServerFn } from '@tanstack/react-start'
 import { adminDeletePost, adminListPosts } from '~/server/posts'
 
 export const Route = createFileRoute('/admin/')({
-  loader: () => adminListPosts(),
+  loader: () => adminListPosts().catch(() => ({ ok: false as const, posts: [] })),
   component: Posts,
 })
 

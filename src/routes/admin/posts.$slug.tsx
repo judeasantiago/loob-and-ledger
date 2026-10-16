@@ -7,7 +7,7 @@ import { GLOSSARY, PARTS, SOURCES } from '~/lib/site'
 import { adminGetPost, adminSavePost } from '~/server/posts'
 
 export const Route = createFileRoute('/admin/posts/$slug')({
-  loader: ({ params }) => adminGetPost({ data: { slug: params.slug } }),
+  loader: ({ params }) => adminGetPost({ data: { slug: params.slug } }).catch(() => ({ ok: false as const })),
   component: Editor,
 })
 

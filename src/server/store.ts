@@ -49,7 +49,8 @@ export interface Store {
   deletePostRow(slug: string): Promise<void>
 }
 
-const url = process.env.DATABASE_URL
+// Tolerate quotes or stray spaces pasted along with the value.
+const url = process.env.DATABASE_URL?.trim().replace(/^["']|["']$/g, '')
 
 function dbStore(connection: string): Store {
   // Works with Supabase's "Transaction pooler" string (port 6543), which does not support prepared statements.
@@ -74,7 +75,7 @@ function dbStore(connection: string): Store {
       // keeps these tables private; this server connects as the database owner, which bypasses it.
       await sql`ALTER TABLE comments ENABLE ROW LEVEL SECURITY`
       await sql`ALTER TABLE posts ENABLE ROW LEVEL SECURITY`
-    })())
+    })().catch((e) => { ready = null; throw e }))
   const iso = (v: unknown) => (v ? new Date(v as string).toISOString() : null)
   const mapC = (r: Record<string, unknown>): CommentRow => ({
     id: r.id as string, slug: r.slug as string, parentId: (r.parent_id as string) ?? null, name: r.name as string, body: r.body as string,

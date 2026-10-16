@@ -43,10 +43,20 @@ function AdminLayout() {
           <Link to="/" className={tab}>View site</Link>
         </nav>
         <div className="flex items-center gap-3 pb-2">
-          <span className="rounded-full bg-gold/30 px-3 py-1 text-xs">{status.mode === 'demo' ? 'Demo mode · nothing is saved permanently' : 'Database connected'}</span>
+          <span className="rounded-full bg-gold/30 px-3 py-1 text-xs">{status.mode === 'demo' ? 'Demo mode · nothing is saved permanently' : status.dbError ? 'Database error' : 'Database connected'}</span>
           <button onClick={async () => { await logout(); void router.invalidate() }} className="underline">Sign out</button>
         </div>
       </div>
+      {status.mode === 'demo' && (
+        <p role="alert" className="mt-4 rounded border border-accent bg-card px-4 py-3 font-ui text-sm">
+          <b>Not connected to a database.</b> {status.hasDatabaseUrl ? 'DATABASE_URL is set but could not be used.' : 'The server cannot see a DATABASE_URL variable.'} Add it in Vercel (Settings, Environment Variables, Production) and redeploy.
+        </p>
+      )}
+      {status.dbError && (
+        <p role="alert" className="mt-4 break-words rounded border border-accent bg-card px-4 py-3 font-ui text-sm">
+          <b>The database connection failed.</b> {status.dbError}
+        </p>
+      )}
       <div className="mt-8"><Outlet /></div>
     </div>
   )

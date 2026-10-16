@@ -4,7 +4,7 @@ import { useServerFn } from '@tanstack/react-start'
 import { adminAct, adminEditComment, adminList } from '~/server/comments'
 
 export const Route = createFileRoute('/admin/comments')({
-  loader: () => adminList(),
+  loader: () => adminList().catch(() => ({ ok: false as const, comments: [] })),
   component: AdminComments,
 })
 

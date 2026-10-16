@@ -14,7 +14,8 @@ export const listComments = createServerFn({ method: 'GET' })
   .validator((d: { slug: string }) => z.object({ slug: z.string().max(80) }).parse(d))
   .handler(async ({ data }) => {
     const store = getStore()
-    const rows = await store.approved(data.slug)
+    let rows: CommentRow[] = []
+    try { rows = await store.approved(data.slug) } catch (e) { console.error('comments: could not load', e) }
     return { mode: store.mode, viewerIsAdmin: await requireAdmin(), comments: rows.map(pub) }
   })
 
@@ -60,11 +61,22 @@ export const reportComment = createServerFn({ method: 'POST' })
 
 /* ---------- admin ---------- */
 
-export const adminStatus = createServerFn({ method: 'GET' }).handler(async () => ({
-  signedIn: await requireAdmin(),
-  configured: Boolean(process.env.ADMIN_PASSWORD && process.env.SESSION_SECRET),
-  mode: getStore().mode,
-}))
+export const adminStatus = createServerFn({ method: 'GET' }).handler(async () => {
+  const signedIn = await requireAdmin()
+  const store = getStore()
+  let dbError: string | null = null
+  if (signedIn && store.mode === 'database') {
+    // Surface connection problems on screen so they are easy to diagnose.
+    try { await store.posts() } catch (e) { dbError = e instanceof Error ? `${e.name}: ${e.message}` : String(e) }
+  }
+  return {
+    signedIn,
+    configured: Boolean(process.env.ADMIN_PASSWORD && process.env.SESSION_SECRET),
+    mode: store.mode,
+    hasDatabaseUrl: Boolean(process.env.DATABASE_URL),
+    dbError,
+  }
+})
 
 export const adminLogin = createServerFn({ method: 'POST' })
   .validator((d: { password: string }) => z.object({ password: z.string().max(200) }).parse(d))
