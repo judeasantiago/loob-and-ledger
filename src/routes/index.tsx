@@ -59,15 +59,15 @@ function Home() {
         <div className="grid gap-6 rounded border border-line bg-card p-6 sm:p-8 md:grid-cols-[1.4fr_1fr] md:items-center">
           <div>
             <div className="eyebrow text-accent">The research behind it</div>
-            <h2 className="display mt-1 text-2xl font-bold">A study still in progress</h2>
-            <p className="mt-2 text-soft">These essays grow out of a BS Psychology research proposal at the {SITE.university}. The study will test whether a stronger sense of utang na loob goes with a stronger sense of family obligation. No results exist yet, and the posts say so.</p>
+            <h2 className="display mt-1 text-2xl font-bold">Where the questions come from</h2>
+            <p className="mt-2 text-soft">These essays grow out of a BS Psychology research proposal at the {SITE.university}. The study will test whether a stronger sense of utang na loob goes with a stronger sense of family obligation.</p>
             <Link to="/study" className="mt-4 inline-block font-ui text-sm font-semibold text-accent no-underline">Read the study at a glance →</Link>
           </div>
           <dl className="grid grid-cols-2 gap-4 font-ui text-sm">
             <div><dt className="text-soft">Design</dt><dd className="font-semibold">Quantitative, correlational</dd></div>
             <div><dt className="text-soft">Survey</dt><dd className="font-semibold">30 items, 5-point scale</dd></div>
             <div><dt className="text-soft">Test</dt><dd className="font-semibold">Pearson r</dd></div>
-            <div><dt className="text-soft">Status</dt><dd className="font-semibold">Data collection pending</dd></div>
+            <div><dt className="text-soft">Respondents</dt><dd className="font-semibold">Filipino youth, 18–25</dd></div>
           </dl>
         </div>
       </section>

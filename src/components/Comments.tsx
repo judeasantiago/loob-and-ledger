@@ -115,7 +115,6 @@ export function Comments({ slug, prompt }: { slug: string; prompt: string }) {
     <section id="comments" aria-labelledby="comments-h" className="mt-14 scroll-mt-24">
       <div className="mb-4 flex items-baseline justify-between gap-3">
         <h2 id="comments-h" className="display text-2xl font-bold">Comments{count ? ` (${count})` : ''}</h2>
-        {query.data?.mode === 'demo' && <span className="rounded bg-gold/25 px-2 py-0.5 font-ui text-[11px] font-semibold uppercase tracking-wide">Demo mode: comments are not saved permanently</span>}
         {viewerIsAdmin && <span className="rounded bg-ink px-2 py-0.5 font-ui text-[11px] font-semibold uppercase tracking-wide text-paper">Signed in as author</span>}
       </div>
       <div className="mb-6 rounded bg-teal p-5 text-teal-ink">

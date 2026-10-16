@@ -23,9 +23,6 @@ Other concepts in the literature sit close by. _Pakikisama_, discussed by Boñon
 
 These are not a checklist of "Filipino traits." They are lenses scholars use to describe how people relate. The study uses only two of them, utang na loob and family obligation, and leaves the others for other researchers.
 
-!note A limit worth stating
-The proposal does not claim that all Filipinos hold these values equally. It looks at one group, college students aged 18–25 at one university.
-
 ## From "we" to "my family"
 
 For most young people the first and nearest "we" is the family. That makes the family the natural place to ask how gratitude and duty meet, which is the question of the next posts.

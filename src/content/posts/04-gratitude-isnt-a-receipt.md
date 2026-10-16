@@ -27,7 +27,4 @@ We use these sources for context, not as evidence about Filipino youth. The poin
 
 Utang na loob is often called a debt, but the debt metaphor is imperfect. A person can feel it deeply and still be free to choose how to respond, which is what _kusang-loob_ means. When the response is no longer free, the feeling may change.
 
-!note The question the study asks
-Not "is gratitude good?" but "when Filipino youth feel more gratitude toward family, do they also feel more family obligation?"
-
 That closes Part 1. Part 2 moves from the feeling to the duty.

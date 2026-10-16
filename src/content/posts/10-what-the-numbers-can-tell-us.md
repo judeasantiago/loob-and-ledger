@@ -2,7 +2,7 @@
 n: 10
 slug: what-the-numbers-can-and-cant-tell-us
 title: What the Numbers Can (and Can't) Tell Us
-deck: Before any data arrives, a guide to reading a correlation honestly.
+deck: A plain guide to reading a correlation honestly.
 part: 4
 hero: loom
 published: 2026-10-16
@@ -11,7 +11,7 @@ sources: ma2026
 prompt: What would a result need to look like to change your mind about how gratitude and duty relate?
 ---
 
-This is the last post of the series, and it is the one we cannot fully write yet, because the study has not collected its data.
+This last post is about reading results honestly: what a correlation can show, and what it cannot.
 
 ## How to read a correlation
 
@@ -26,9 +26,6 @@ A Pearson correlation gives a number between −1 and +1. Near +1 means the two 
 ## Even a strong result is a beginning
 
 Work such as Ma and colleagues, linking gratitude to filial responsibility through mediating factors [@ma2026], suggests the relationship may involve other variables. Those would be the next questions, for the team or for others.
-
-!note Results: pending
-Data collection has not begun. When results are available they will be added here, along with the limitations in full. Until then, nothing on this site should be read as a finding.
 
 ## Thank you for reading
 

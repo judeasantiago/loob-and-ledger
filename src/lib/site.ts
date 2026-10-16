@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Loob & Ledger',
   tagline: 'Notes on gratitude, duty, and the families that shape us.',
   url: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '') || 'https://loob-and-ledger.vercel.app',
-  authors: ['Rhealyn G. Pangan', 'Judea C. Santiago', 'Ahrianna Nicole G. Suaybaguio', 'Pearll Alexis P. Tagubase'],
+  authors: ['Judea C. Santiago', 'Rhealyn G. Pangan', 'Ahrianna Nicole G. Suaybaguio', 'Pearll Alexis P. Tagubase'],
   university: 'University of Caloocan City',
   program: 'BS Psychology, College of Liberal Arts and Sciences',
 }

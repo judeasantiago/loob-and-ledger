@@ -31,7 +31,4 @@ That is why the proposal emphasizes _kusang-loob_. Gratitude that is willing and
 - It is not the same as obligation. One is a feeling about the past; the other is a duty about the present. The study asks how they connect.
 - It is not automatically a burden. Whether it feels like one is part of what makes the topic interesting.
 
-!note A note on translation
-English gratitude and Filipino utang na loob overlap, but they are not identical. That is one reason the study uses a Filipino-language questionnaire.
-
 Next: kapwa, the shared self that makes utang na loob make sense.

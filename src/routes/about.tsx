@@ -19,9 +19,9 @@ function About() {
       </ul>
       <p className="mt-4 text-soft">{SITE.program}, {SITE.university}, Congressional Road Extension, Barangay 171, Caloocan, Metro Manila.</p>
       <h2 className="display mt-10 text-2xl font-bold">About the posts</h2>
-      <p className="mt-2">The ten posts are explanatory essays based on Chapters 1 to 3 of the team’s research proposal. They summarize the literature the proposal cites and explain how the study will be run. They are not research findings, and the study has not collected data yet.</p>
+      <p className="mt-2">The ten posts are explanatory essays based on Chapters 1 to 3 of the team’s research proposal. They summarize the literature the proposal cites and explain how the study will be run.</p>
       <h2 className="display mt-10 text-2xl font-bold">How to cite</h2>
-      <p className="mt-2 rounded border border-line bg-card p-4 font-ui text-sm">Pangan, R. G., Santiago, J. C., Suaybaguio, A. N. G., &amp; Tagubase, P. A. P. (2026). <i>“Retirement Plan Yarn?”: Isang korelasyonal na pag-aaral ng utang na loob at obligasyon sa pamilya ng mga kabataang Pilipino</i> [Research proposal]. University of Caloocan City.</p>
+      <p className="mt-2 rounded border border-line bg-card p-4 font-ui text-sm">Santiago, J. C., Pangan, R. G., Suaybaguio, A. N. G., &amp; Tagubase, P. A. P. (2026). <i>“Retirement Plan Yarn?”: Isang korelasyonal na pag-aaral ng utang na loob at obligasyon sa pamilya ng mga kabataang Pilipino</i> [Research proposal]. University of Caloocan City.</p>
     </div>
   )
 }

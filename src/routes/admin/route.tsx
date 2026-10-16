@@ -21,7 +21,6 @@ function AdminLayout() {
     return (
       <div className="mx-auto max-w-sm px-4 py-16">
         <h1 className="display text-3xl font-bold">Admin sign in</h1>
-        {!status.configured && <p className="mt-3 rounded border border-line bg-card p-3 font-ui text-sm">ADMIN_PASSWORD and SESSION_SECRET are not set yet. Add both in your environment variables, redeploy, then sign in.</p>}
         <form className="mt-6 grid gap-3" onSubmit={async (e) => { e.preventDefault(); const r = await login({ data: { password: pw } }); if (r.ok) { setErr(''); void router.invalidate() } else setErr(r.error ?? 'Could not sign in') }}>
           <label htmlFor="pw" className="font-ui text-sm font-semibold">Password</label>
           <input id="pw" type="password" value={pw} onChange={(e) => setPw(e.target.value)} className="rounded-[3px] border border-line bg-card px-3 py-2" autoComplete="current-password" />
@@ -43,7 +42,7 @@ function AdminLayout() {
           <Link to="/" className={tab}>View site</Link>
         </nav>
         <div className="flex items-center gap-3 pb-2">
-          <span className="rounded-full bg-gold/30 px-3 py-1 text-xs">{status.mode === 'demo' ? 'Demo mode · nothing is saved permanently' : status.dbError ? 'Database error' : 'Database connected'}</span>
+          {status.dbError && <span className="rounded-full bg-accent/20 px-3 py-1 text-xs text-accent">Database error</span>}
           <button onClick={async () => { await logout(); void router.invalidate() }} className="underline">Sign out</button>
         </div>
       </div>

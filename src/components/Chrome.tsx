@@ -77,7 +77,7 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
       <div className="w-full max-w-xl overflow-hidden rounded-lg border border-line bg-card shadow-2xl">
         <div className="flex items-center gap-1 border-b border-line pr-2">
           <input ref={ref} type="text" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search posts, terms, and sources" aria-label="Search"
-            className="min-w-0 flex-1 bg-transparent px-4 py-3.5 font-ui text-base outline-none focus-visible:outline-none" />
+            className="bare min-w-0 flex-1 bg-transparent px-4 py-3.5 font-ui text-base outline-none" />
           {q && (
             <button type="button" onClick={() => { setQ(''); ref.current?.focus() }} aria-label="Clear search" title="Clear"
               className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-soft hover:bg-paper hover:text-ink">
@@ -167,7 +167,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-line px-4 py-4 text-center font-ui text-xs text-soft">
-        These posts are explanatory essays based on a research proposal in progress. They are not peer-reviewed findings.
+        © {new Date().getFullYear()} {SITE.name}
       </div>
     </footer>
   )

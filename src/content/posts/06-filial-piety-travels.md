@@ -23,9 +23,6 @@ Ji examines how filial piety and intergenerational caregiving have been reshaped
 
 Grava and colleagues looked at emotions in the transnational enactment of Filipino family obligation and utang na loob, through remittance-sending [@grava2026]. That is a reminder that obligation can stretch across oceans, and that feelings travel with the money.
 
-!note Why include other countries?
-The study is about Filipino youth. Work from elsewhere helps us see what is shared and what might be distinctively Filipino, without assuming either.
-
 ## What this gives the study
 
 It gives a reason for humility. Family obligation is not a single fixed thing, so the study measures it as the respondents themselves understand it, using a Filipino-language questionnaire.

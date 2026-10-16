@@ -23,10 +23,7 @@ function Box({ children, tone = 'plain' }: { children: React.ReactNode; tone?: '
 function Study() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="eyebrow text-accent">The study</div>
-        <span className="rounded-full bg-gold/30 px-3 py-1 font-ui text-xs font-semibold">Status: proposal stage · data collection pending</span>
-      </div>
+      <div className="eyebrow text-accent">The study</div>
       <h1 className="display mt-2 text-4xl font-bold sm:text-5xl">“Retirement Plan Yarn?”</h1>
       <p className="mt-3 text-xl text-soft"><em>Isang Korelasyonal na Pag-aaral ng Utang na Loob at Obligasyon sa Pamilya ng mga Kabataang Pilipino.</em> A correlational study of utang na loob and family obligation among Filipino youth.</p>
       <p className="mt-3 font-ui text-sm text-soft">By {SITE.authors.join(', ')} · {SITE.university}, {SITE.program}. Prepared as part of the course Kontekstwalisadong Komunikasyon sa Filipino, July 2026.</p>
@@ -64,7 +61,7 @@ function Study() {
       <section className="mt-12" aria-labelledby="who">
         <h2 id="who" className="display text-2xl font-bold">Who and how</h2>
         <ul className="mt-3 grid gap-2 pl-5 [&>li]:list-disc [&>li]:marker:text-accent">
-          <li><b>Respondents.</b> Filipino youth aged 18–25 who are college students at the {SITE.university}, Congress Campus, in academic year 2026–2027. Final sample details are still being settled.</li>
+          <li><b>Respondents.</b> Filipino youth aged 18–25 who are college students at the {SITE.university}, Congress Campus, in academic year 2026–2027.</li>
           <li><b>Design.</b> Quantitative and correlational. The researchers do not manipulate either variable.</li>
           <li><b>Instrument.</b> A researcher-made questionnaire in three parts: demographic profile (age, sex, educational level, program), 15 items on utang na loob, and 15 items on family obligation, answered on a 5-point Likert scale from “Lubos na Hindi Sumasang-ayon” (1) to “Lubos na Sumasang-ayon” (5).</li>
           <li><b>Analysis.</b> Frequency and percentage for the profile; weighted mean and standard deviation for each variable; one-way ANOVA for differences by age and educational level; Pearson product-moment correlation for the main question.</li>

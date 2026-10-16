@@ -21,9 +21,6 @@ _Utang na loob_ is often translated as "debt of gratitude," but the literal mean
 
 _Obligasyon sa pamilya_, family obligation, is the practical side: helping, supporting, caring, and showing up. It can mean money, and it can mean time, attention, or emotional support.
 
-!note What this series is
-These posts explain the ideas and the study behind them. The study has not collected data yet, so nothing here is a finding. When results exist, we will say so clearly.
-
 ## Why ask whether they are connected
 
 It seems obvious that someone who feels deep gratitude would also feel responsible. But "seems obvious" is exactly where research is useful. Gratitude can motivate help freely given, and it can also feel like pressure. Duty can grow from love, and it can grow from expectation. A correlational study cannot settle why, but it can check whether the two really rise and fall together, and how strongly.

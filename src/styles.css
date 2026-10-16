@@ -52,6 +52,8 @@ body {
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+input.bare:focus-visible { border-color: transparent; box-shadow: none; }
 ::selection { background: color-mix(in srgb, var(--gold) 45%, transparent); }
 
 .eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }

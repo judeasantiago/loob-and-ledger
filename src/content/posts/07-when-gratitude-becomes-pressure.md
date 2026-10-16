@@ -23,7 +23,6 @@ Rather than summarizing their conclusions here, we point you to the papers, whic
 
 It does not measure stress, and it does not ask whether obligation is healthy. It asks only whether the two ideas relate. If a relationship is found, it will not say whether it is good or bad.
 
-!note If this one hit close to home
-Family pressure can be heavy. If it is weighing on you, a guidance counselor, a trusted adult, or a mental health professional is a good person to talk to. This series is not counseling.
+Family pressure can be heavy. If it is weighing on you, a guidance counselor, a trusted adult, or a mental health professional is a good person to talk to.
 
 Next, Part 3: parents, and how the study is built.

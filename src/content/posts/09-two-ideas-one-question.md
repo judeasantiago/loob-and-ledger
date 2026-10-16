@@ -19,7 +19,7 @@ The study is quantitative and correlational: researchers do not change anything,
 
 ## The people
 
-The respondents are Filipino youth aged 18–25, college students at the University of Caloocan City, Congress Campus, in academic year 2026–2027. Final details about the sample are still being settled.
+The respondents are Filipino youth aged 18–25, college students at the University of Caloocan City, Congress Campus, in academic year 2026–2027.
 
 ## The questionnaire
 
