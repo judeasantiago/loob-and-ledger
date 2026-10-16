@@ -32,6 +32,11 @@ export const postComment = createServerFn({ method: 'POST' })
   .handler(async ({ data }): Promise<{ ok: true; message: string } | { ok: false; error: string }> => {
     if (!postBySlug(data.slug)) return { ok: false, error: 'That post does not exist.' }
     if (data.website) return { ok: true, message: 'Thanks! Your comment is waiting for review.' } // silently drop bots
+    if (await isAdmin()) {
+      // Signed-in moderators skip the spam checks and publish straight away.
+      await getStore().insert({ slug: data.slug, parentId: data.parentId, name: data.name, body: data.body, status: 'approved', ipHash: 'admin' })
+      return { ok: true, message: 'Posted. Your comment is live.' }
+    }
     if (Date.now() - data.openedAt < 4000) return { ok: false, error: 'That was quick. Take a moment and try again.' }
     const ip = await hashedIp()
     if (!(await rateLimit(`c:${ip}`, 5, 3600))) return { ok: false, error: 'You have posted a few comments recently. Please try again later.' }
