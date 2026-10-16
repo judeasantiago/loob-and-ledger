@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Hero } from '~/components/Hero'
 import { PostCard } from '~/components/PostCard'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { PARTS, SITE } from '~/lib/site'
 import { seo } from '~/lib/seo'
 
@@ -11,6 +11,7 @@ export const Route = createFileRoute('/')({
 })
 
 function Home() {
+  const POSTS = usePosts()
   const first = POSTS[0]
   return (
     <>
@@ -21,7 +22,7 @@ function Home() {
             <h1 className="display text-[clamp(38px,6vw,64px)] font-bold leading-[1.02]">Retirement Plan, <em className="font-medium text-gold">Yarn?</em></h1>
             <p className="max-w-[36ch] text-xl opacity-95">Is helping family a debt we feel, or a duty we were handed? Notes on gratitude, obligation, and the homes that raised us.</p>
             <div className="flex flex-wrap gap-3">
-              <Link to="/journal/$slug" params={{ slug: first.slug }} className="rounded-[3px] bg-paper px-5 py-3 font-ui text-sm font-semibold text-ink no-underline">Start reading</Link>
+              {first && <Link to="/journal/$slug" params={{ slug: first.slug }} className="rounded-[3px] bg-paper px-5 py-3 font-ui text-sm font-semibold text-ink no-underline">Start reading</Link>}
               <Link to="/series" className="rounded-[3px] border border-teal-ink/40 px-5 py-3 font-ui text-sm font-semibold no-underline hover:bg-white/10">See the series</Link>
             </div>
           </div>

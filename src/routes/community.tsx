@@ -19,8 +19,8 @@ function Page() {
           <li>Please do not give medical or mental-health advice. If a post touched something heavy for you, talking to a counselor or a trusted adult can help.</li>
           <li>No links, ads, or self-promotion. Links are switched off for now.</li>
         </ul>
-        <h2>How moderation works</h2>
-        <p>Every comment is read before it appears. We remove comments that are abusive, identify private individuals, or are spam. Each comment has a Report button, and a comment reported several times is hidden until a moderator reviews it.</p>
+        <h2>How it works</h2>
+        <p>Comments appear as soon as you post them. The site owner reads them afterwards and removes any that are abusive, identify private individuals, or are spam. Each comment has a Report button, and a comment reported several times is hidden until it has been reviewed.</p>
         <h2>What we store</h2>
         <ul>
           <li>The name or nickname you type, your comment, and the time you posted it. You do not need to use your real name.</li>

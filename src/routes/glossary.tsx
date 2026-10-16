@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { GLOSSARY } from '~/lib/site'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { seo } from '~/lib/seo'
 
 export const Route = createFileRoute('/glossary')({
@@ -9,6 +9,7 @@ export const Route = createFileRoute('/glossary')({
 })
 
 function Glossary() {
+  const POSTS = usePosts()
   const terms = [...GLOSSARY].sort((a, b) => a.term.localeCompare(b.term))
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">

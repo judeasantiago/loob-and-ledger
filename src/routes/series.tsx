@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Hero } from '~/components/Hero'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { PARTS } from '~/lib/site'
 import { seo } from '~/lib/seo'
 
@@ -10,6 +10,7 @@ export const Route = createFileRoute('/series')({
 })
 
 function Series() {
+  const POSTS = usePosts()
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       <div className="eyebrow text-accent">The series</div>

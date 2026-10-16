@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { PostCard } from '~/components/PostCard'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { PARTS } from '~/lib/site'
 import { seo } from '~/lib/seo'
 
@@ -15,6 +15,7 @@ export const Route = createFileRoute('/journal/')({
 
 function Journal() {
   const { part } = Route.useSearch()
+  const POSTS = usePosts()
   const list = part ? POSTS.filter((p) => p.part === part) : POSTS
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">

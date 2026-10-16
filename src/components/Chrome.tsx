@@ -3,7 +3,8 @@ import { Link } from '@tanstack/react-router'
 import MiniSearch from 'minisearch'
 import { Mark } from './Hero'
 import { GLOSSARY, SITE, SOURCES } from '~/lib/site'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
+import type { Post } from '~/lib/posts'
 
 const NAV = [
   { to: '/journal', label: 'Journal' },
@@ -25,7 +26,7 @@ function ThemeToggle() {
   const [dark, setDark] = useState(false)
   useEffect(() => {
     const el = document.documentElement
-    setDark(el.dataset.theme ? el.dataset.theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches)
+    setDark(el.dataset.theme === 'dark')
   }, [])
   return (
     <button type="button" aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} title="Light / dark"
@@ -44,7 +45,7 @@ function ThemeToggle() {
 }
 
 type Hit = { id: string; kind: 'Post' | 'Term' | 'Source'; title: string; sub: string; to: string; hash?: string }
-function buildIndex() {
+function buildIndex(POSTS: Post[]) {
   const docs: Hit[] = [
     ...POSTS.map((p) => ({ id: `p-${p.slug}`, kind: 'Post' as const, title: p.title, sub: p.deck, to: `/journal/${p.slug}`, text: p.body })),
     ...GLOSSARY.map((t) => ({ id: `t-${t.slug}`, kind: 'Term' as const, title: t.term, sub: t.short, to: '/glossary', hash: t.slug, text: t.long })),
@@ -57,7 +58,8 @@ function buildIndex() {
 
 function SearchDialog({ onClose }: { onClose: () => void }) {
   const [q, setQ] = useState('')
-  const ms = useMemo(buildIndex, [])
+  const posts = usePosts()
+  const ms = useMemo(() => buildIndex(posts), [posts])
   const hits = q.trim() ? ms.search(q).slice(0, 8) : []
   const ref = useRef<HTMLInputElement>(null)
   useEffect(() => { ref.current?.focus() }, [])

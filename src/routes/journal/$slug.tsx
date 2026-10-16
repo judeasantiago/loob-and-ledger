@@ -4,18 +4,20 @@ import { Hero } from '~/components/Hero'
 import { Markdown } from '~/lib/markdown'
 import { Comments, useCommentCount } from '~/components/Comments'
 import { MobileBar, QuoteShare, ShareButton, ShareRail, ShareRow } from '~/components/Share'
-import { neighbors, postBySlug } from '~/lib/posts'
+import { findPost, neighbors } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { PARTS, SITE, sourceByKey, termBySlug } from '~/lib/site'
 import { seo } from '~/lib/seo'
 
 export const Route = createFileRoute('/journal/$slug')({
-  loader: ({ params }) => {
-    const post = postBySlug(params.slug)
+  loader: async ({ params, parentMatchPromise }) => {
+    const posts = (await parentMatchPromise).loaderData ?? []
+    const post = findPost(posts, params.slug)
     if (!post) throw notFound()
-    return { slug: post.slug }
+    return { post }
   },
-  head: ({ params }) => {
-    const p = postBySlug(params.slug)
+  head: ({ loaderData }) => {
+    const p = loaderData?.post
     if (!p) return {}
     const base = seo({ title: p.title, description: p.deck, path: `/journal/${p.slug}`, type: 'article' })
     return {
@@ -42,10 +44,11 @@ function ReadingProgress() {
 }
 
 function Article() {
-  const { slug } = Route.useLoaderData()
-  const post = postBySlug(slug)!
+  const { slug } = Route.useParams()
+  const posts = usePosts()
+  const post = findPost(posts, slug) ?? Route.useLoaderData().post
   const part = PARTS.find((x) => x.n === post.part)!
-  const { prev, next } = neighbors(post)
+  const { prev, next } = neighbors(posts, post)
   const { count } = useCommentCount(post.slug)
   const path = `/journal/${post.slug}`
   const terms = post.terms.map(termBySlug).filter(Boolean)

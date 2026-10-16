@@ -5,8 +5,11 @@ import { Header, Footer } from '~/components/Chrome'
 import { WeaveDefs } from '~/components/Hero'
 import { Toaster } from '~/components/Share'
 import { SITE } from '~/lib/site'
+import { getPosts } from '~/server/posts'
 
 export const Route = createRootRoute({
+  loader: () => getPosts(),
+  staleTime: 30_000,
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
@@ -23,7 +26,7 @@ export const Route = createRootRoute({
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
       { rel: 'alternate', type: 'application/rss+xml', title: SITE.name, href: '/rss.xml' },
     ],
-    scripts: [{ children: `try{var t=localStorage.getItem('ll_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}` }],
+    scripts: [{ children: `try{var t=localStorage.getItem('ll_theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}` }],
   }),
   component: Root,
 })

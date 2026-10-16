@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { SOURCES } from '~/lib/site'
-import { POSTS } from '~/lib/posts'
+import { usePosts } from '~/lib/usePosts'
 import { seo } from '~/lib/seo'
 
 export const Route = createFileRoute('/sources')({
@@ -10,6 +10,7 @@ export const Route = createFileRoute('/sources')({
 })
 
 function Sources() {
+  const POSTS = usePosts()
   const [q, setQ] = useState('')
   const list = SOURCES.filter((s) => s.full.toLowerCase().includes(q.toLowerCase()))
   return (
