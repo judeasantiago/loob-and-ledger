@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import MiniSearch from 'minisearch'
 import { Mark } from './Hero'
@@ -62,12 +63,30 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
   const ms = useMemo(() => buildIndex(posts), [posts])
   const hits = q.trim() ? ms.search(q).slice(0, 8) : []
   const ref = useRef<HTMLInputElement>(null)
-  useEffect(() => { ref.current?.focus() }, [])
+  useEffect(() => {
+    ref.current?.focus()
+    // Escape closes from anywhere, and the page behind does not scroll while the dialog is open.
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = prev }
+  }, [onClose])
   return (
-    <div className="fixed inset-0 z-[70] grid place-items-start justify-items-center bg-black/50 px-4 pt-[12vh]" role="dialog" aria-modal="true" aria-label="Search" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+    <div className="fixed inset-0 z-[70] grid place-items-start justify-items-center bg-black/50 px-4 pt-[8vh] sm:pt-[12vh]" role="dialog" aria-modal="true" aria-label="Search" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="w-full max-w-xl overflow-hidden rounded-lg border border-line bg-card shadow-2xl">
-        <input ref={ref} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === 'Escape' && onClose()} placeholder="Search posts, terms, and sources" aria-label="Search"
-          className="w-full border-b border-line bg-transparent px-4 py-3.5 font-ui text-base outline-none" />
+        <div className="flex items-center gap-1 border-b border-line pr-2">
+          <input ref={ref} type="text" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search posts, terms, and sources" aria-label="Search"
+            className="min-w-0 flex-1 bg-transparent px-4 py-3.5 font-ui text-base outline-none focus-visible:outline-none" />
+          {q && (
+            <button type="button" onClick={() => { setQ(''); ref.current?.focus() }} aria-label="Clear search" title="Clear"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-soft hover:bg-paper hover:text-ink">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M9 9l6 6M15 9l-6 6" /></svg>
+            </button>
+          )}
+          <button type="button" onClick={onClose} aria-label="Close search"
+            className="shrink-0 rounded-[3px] border border-line px-2.5 py-1.5 font-ui text-xs font-semibold text-soft hover:bg-paper hover:text-ink">Close</button>
+        </div>
         <ul className="max-h-[50vh] overflow-auto">
           {q && hits.length === 0 && <li className="px-4 py-6 font-ui text-sm text-soft">Nothing found for “{q}”.</li>}
           {hits.map((h) => (
@@ -89,6 +108,7 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
 export function Header() {
   const [menu, setMenu] = useState(false)
   const [search, setSearch] = useState(false)
+  const closeSearch = useCallback(() => setSearch(false), [])
   useEffect(() => {
     const on = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setSearch(true) } }
     window.addEventListener('keydown', on)
@@ -121,7 +141,7 @@ export function Header() {
           ))}
         </nav>
       )}
-      {search && <SearchDialog onClose={() => setSearch(false)} />}
+      {search && createPortal(<SearchDialog onClose={closeSearch} />, document.body)}
     </header>
   )
 }
